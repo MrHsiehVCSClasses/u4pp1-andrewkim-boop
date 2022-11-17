@@ -21,28 +21,13 @@ public class InputHelper {
     public static int getIntegerInput(String prompt, int min, int max){
         System.out.println(prompt);
         String hold = myScanner.nextLine();
-        String hsieh = "hi";
-        int num;
-        while(hsieh != "bye")
-            System.out.println("Your input is - " + hold + "\nPlease input a number");
+        int i = min - 1;
+        while(i < min || i > max){
             System.out.println(prompt);
+            System.out.println("Your input is - " + hold);
             hold = myScanner.nextLine();
-            try {
-                num = Integer.parseInt(prompt);
-                if(num >= min && num <= max){
-                    return num;
-                }
-                else{
-                    System.out.println("Please type a number between " + min + " and " + max);
-                    System.out.println(prompt);
-                    hold = myScanner.nextLine();
-                    return num;
-                }
-            }   
-            catch (NumberFormatException e) {
-                System.out.println("That was not an integer, please try again");
-            }
-            return 0;
-            //this try, catch sequence has been reutilized from https://stackoverflow.com/questions/5585779/how-do-i-convert-a-string-to-an-int-in-java
+            i = Integer.parseInt(hold);
+        }
+        return i;
     }
 }
